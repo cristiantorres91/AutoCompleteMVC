@@ -155,3 +155,5 @@ Crear Autocomplete en Asp.net MVC 5 Usando la Libreria Select2
 <span style="font-family: Arial, Helvetica, sans-serif;">En la primera parte obtenemos los datos invocando por ajax el método&nbsp;<b>GetDepartamento</b> de nuestro controlador en esta parte también&nbsp;usamos algunas propiedades de la librería&nbsp;<b>select2</b> para asignarle el tema y placeholder.
 En la segunda parte capturamos el id del dato seleccionado y enviamos por ajax este valor a nuestro método&nbsp;<b>Save</b> de nuestro controlador, también&nbsp;acá&nbsp;asignamos el valor del id seleccionado a nuestro textbox.
 
+<div class="separator" style="clear: both; text-align: center;">
+<a href="https://drive.google.com/uc?id=1qOx55aw7ww_BQ__SgDorBJOYwUzbC9vW" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="176" data-original-width="383" height="147" src="https://drive.google.com/uc?id=1qOx55aw7ww_BQ__SgDorBJOYwUzbC9vW" width="320" /></a></div>
