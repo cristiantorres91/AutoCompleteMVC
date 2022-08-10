@@ -1,0 +1,75 @@
+﻿@model PruebaAutocomplete.Models.Departamento
+@{
+    ViewBag.Title = "Index";
+
+}
+
+@*tema de boostrap para select2*@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" />
+
+
+
+<h2>Index</h2>
+@using (Html.BeginForm("GetDepartamento", "Departamento", FormMethod.Post))
+{
+    @*<input type="hidden" id="txtId" />*@
+    <select class="mySelect2" style="width:200px"></select>
+    <br />
+    <br />
+    <div class="form-group">
+        @Html.TextBoxFor(m => m.Id, null, new { disabled = true })
+
+    </div>
+    <br />
+    <br />
+    <input type="text" id="txtdato" />
+
+
+}
+
+
+
+
+<script>
+    //obtengo datos por ajax
+    $(document).ready(function () {
+        $(".mySelect2").select2({
+            placeholder: "Seleccione Departamento",
+            allowClear: true,
+            theme: "bootstrap",
+            ajax: {
+                //invoco el metodo de mi controlador
+                url: '@Url.Action("GetDepartamento","Departamento")',
+                dataType: 'json',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        departamento: params.term //parametro de metodo de mi controlador
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
+    });
+
+    //capturar dato seleccionado
+    $(".mySelect2").on("change", function () {
+        var departamentoID = $(this).val(); //capturo id seleccionado
+        var textboxData = departamentoID; //variable para enviar
+        $.ajax({
+            url: '@Url.Action("Save","Departamento")', //url metodo de mi controlador
+            data: { id: textboxData },
+            dataType: 'json',
+            type: 'post',
+            success: function () {
+                $("#txtdato").val(textboxData);//asigno id a textbox
+                $("#Id").val(textboxData);//asigno id a textbox
+            }
+        });
+
+    });
+</script>
